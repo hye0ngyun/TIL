@@ -32,3 +32,47 @@
 - 컨테이너라는 특성으로 구현 환경이 달라 A PC에서 되던 것이 B PC에서 안되는 환경 불일치를 방지한다. -> 어디서나 이미지로 환경을 일치시킨다.
 - 컨테이너(환경)의 확장과 축소가 쉽다.
 - 인수인계 시 서버의 운영 기록을 인계할 경우 도커 컨테이너 특성으로 시간이 절약된다.
+
+## 도커 용어 및 개념
+
+- Dockerfile
+  - Dockerfile은 도커 이미지를 빌드하기 위한 청사진이다.
+- Image
+  - Image는 도커 컨테이너를 실행하기 위한 템플릿이다.
+- Container
+  - Container는 격리된 하나의 실행중인 프로세스이다.
+
+## 자주 사용하는 도커 명령어
+
+- `docker images`
+  - docker image를 보여준다.
+  - ex) `docker images`
+- `docker ps`
+  - docker container를 보여준다.
+  - ex) `docker ps [option]`, `docker ps -a`
+- `docker build`
+  - Dockerfile을 image로 빌드한다.
+- `docker push`
+  - docker image를 public(ex; Docker hub), priavte(개인 서버)하게 업로드 한다.
+- `docker pull`
+  - 업로드 돼있는 docker image를 다운로드 한다.
+  - ex) `docker pull httpd`
+- `docker run`
+  - docker image를 이용해 container를 생성하고 실행시킨다.
+  - ex) `docker run httpd`
+- `docker stop`
+  - 실행 중인 container를 중지시킨다.
+  - ex) `docker stop name`
+- `docker start`
+  - 중지 중인 container를 실행시킨다.
+  - ex) `docker start name`
+- `docker rm`
+  - container를 삭제한다.
+  - ex) `docker rm name`
+- `docker rmi`
+  - docker image를 삭제한다.
+  - ex) `docker rmi httpd`
+
+## 참고 자료
+
+- [Docker docs](https://docs.docker.com/get-started/overview/)
