@@ -18,6 +18,19 @@ Today I Learned
 
 ### API
 
-- [[2021.08.15] API란 무엇인가?](WEB/API.md)
+- [API란 무엇인가?](./docs/WEB/API.md)
+
+### JavaScript
+
+- [내장 객체](./docs/WEB/Built-in_Object.md)
+
+### DeepLearning
+
+- [퍼셉트론](./docs/DeepLearning/1_Perceptron.md)
+- [활성화 함수](./docs/DeepLearning/2_Activation_Function.ipynb)
+- [3층 신경망](./docs/DeepLearning/3_3layer_nueral_network.ipynb)
+- [출력층 설계와 소프트맥스 함수](./docs/DeepLearning/4_outputlayer_softmax.ipynb)
+- [MNIST 실습과 배치](./docs/DeepLearning/5_MNIST_practice_batch.ipynb)
+- [손실 함수](./docs/DeepLearning/6_loss_function.ipynb)
 
 ---
