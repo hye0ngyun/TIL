@@ -31,7 +31,7 @@ Today I Learned
 ### DeepLearning
 
 - [퍼셉트론](./docs/DeepLearning/1_Perceptron.md)
-- [활성화 함수](./docs/DeepLearning/2_Activation_Function.ipynb)
+- [활성화 함수](./docs/DeepLearning/2_activation_function.ipynb)
 - [3층 신경망](./docs/DeepLearning/3_3layer_nueral_network.ipynb)
 - [출력층 설계와 소프트맥스 함수](./docs/DeepLearning/4_outputlayer_softmax.ipynb)
 - [MNIST 실습과 배치](./docs/DeepLearning/5_MNIST_practice_batch.ipynb)
