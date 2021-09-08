@@ -42,6 +42,14 @@
 - Container
   - Container는 격리된 하나의 실행중인 프로세스이다.
 
+## Dockerfile을 작성하는 이유
+
+- Dockerfile은 이미지를 작성할 수 있는 설정 파일이다.
+- 예를 들어 Dockerfile이 없다면 기존 도커 우분투 컨테이너 안에 접속해서 python을 설치하고, 다른 우분투 컨테이너에 접속을 해서 nodejs를 설치하는 수동 작업해야 한다.
+- 위와 같은 수동 작업을 Dockerfile를 이용하면 자동으로 모든걸 처리하여 이미지로 작성할 수 있다.
+
+![docker commit](./img/docker_commit2.png)
+
 ## 자주 사용하는 도커 명령어
 
 - `docker images`
@@ -53,7 +61,7 @@
 - `docker build`
   - Dockerfile을 image로 빌드한다.
 - `docker push`
-  - docker image를 public(ex; Docker hub), priavte(개인 서버)하게 업로드 한다.
+  - docker image를 public(ex; Docker hub), private(개인 서버)하게 업로드 한다.
 - `docker pull`
   - 업로드 돼있는 docker image를 다운로드 한다.
   - ex) `docker pull httpd`
