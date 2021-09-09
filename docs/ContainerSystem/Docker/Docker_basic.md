@@ -1,6 +1,7 @@
 # 도커(Docker)
 
-- 도커는 클라이언트, 서버 환경을 컨테이너(Container)로 관리하는 도구이다.
+- 도커는 2013년에 등장한 컨테이너(Container)기반 가상화 도구이다.
+- 도커는 리눅스 상에서 컨테이너 방식으로 프로세스를 격리해서 실행하고 관리할 수 있도록 도와주며, 계층화된 파일 시스템에 기반해 효율적으로 이미지(프로세스 실행 환경)을 구축할 수 있게 한다.
 
 ## 도커 등장 배경
 
@@ -50,6 +51,34 @@
 
 ![docker commit](./img/docker_commit2.png)
 
+Dockerfile 형식
+
+```Dockerfile
+FROM <IMAGE_NAME>
+RUN <COMMAND>
+```
+
+Dockerfile 작성 예시
+
+```Dockerfile
+FROM ubuntu:18.04
+RUN apt update && apt install -y git
+```
+
+이렇게 작성 된 Dockerfile은 Dockerfile이 있는 디렉토리에 존재하는 터미널에서 `docker build -t ubuntu:git`명령어를 이용해 빌드하여 이미지를 만들 수 있다.
+참고로 도커 빌드 과정에서 입력이 불가능하기 때문에 `apt install -y git`에서 `-y`를 반드시 해주어야 한다.
+
+각 RUN은 이미지 레이어를 생성시킨다.
+레이어마다 docker commit을 실행한다.
+
+```Dockerfile
+FROM <IMAGE_NAME>
+# 레이어 1
+RUN <COMMAND>
+# 레이어 2
+RUN <COMMAND>
+```
+
 ## 자주 사용하는 도커 명령어
 
 - `docker images`
@@ -60,6 +89,10 @@
   - ex) `docker ps [option]`, `docker ps -a`
 - `docker build`
   - Dockerfile을 image로 빌드한다.
+  - ex) `docker build -t imagename:tagname .`
+- `docker commit`
+  - docker container를 이미지로 만든다.
+  - ex) `docker commit 기준컨테이너 이미지명:태그명`
 - `docker push`
   - docker image를 public(ex; Docker hub), private(개인 서버)하게 업로드 한다.
 - `docker pull`
