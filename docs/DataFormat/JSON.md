@@ -1,5 +1,6 @@
 # JSON(JavaScript Object NMotation)
 
+- 숫자, 문자, 참 또는 거짓 등 여러 형태의 데이터를 키(key)와 값(value)으로 구조화된 데이터 객체(object)에 담아 처리하는 규격이다.
 - 더글라스 크록포드(Douglas Crockford)가 널리 퍼뜨린 JavaScript 객체 문법을 따르는 문자 기반의 데이터 포맷이다.
 - JavaScript 객체 문법과 유사하지만 JavaScript가 아니어도 JSON을 읽고 쓸 수 있는 기능이 다양한 프로그래밍 환경에서 제공된다.
 

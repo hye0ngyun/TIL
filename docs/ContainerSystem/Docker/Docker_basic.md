@@ -30,6 +30,7 @@
 
 ## 도커를 사용하는 이유
 
+- 컨테이너는 애플리케이션을 환경에 구애받지 않고 실행하는 기술이다.
 - 컨테이너라는 특성으로 구현 환경이 달라 A PC에서 되던 것이 B PC에서 안되는 환경 불일치를 방지한다. -> 어디서나 이미지로 환경을 일치시킨다.
 - 컨테이너(환경)의 확장과 축소가 쉽다.
 - 인수인계 시 서버의 운영 기록을 인계할 경우 도커 컨테이너 특성으로 시간이 절약된다.
@@ -116,4 +117,6 @@ RUN <COMMAND>
 
 ## 참고 자료
 
-- [Docker docs](https://docs.docker.com/get-started/overview/)
+- [Docker docs - https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/)
+- [도커 소개와 우분투에 도커 CE 설치하기 - https://www.bsidesoft.com/7820](https://www.bsidesoft.com/7820)
+- [도커 이미지 빌드와 Dockerfile 기초 - https://www.44bits.io/ko/post/building-docker-image-basic-commit-diff-and-dockerfile](https://www.44bits.io/ko/post/building-docker-image-basic-commit-diff-and-dockerfile)

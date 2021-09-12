@@ -11,7 +11,7 @@ Today I Learned
 
 - 폴더명과 파일명을 가능하면 영문으로 작성한다.
 - 해당 문서를 처음 보는 사람도 필요한 내용을 찾기 쉽도록 분류한다.
-- 한번 작성한 문서는 다시 검색하는 추가비용이 들지 않도록 자세히 작성한다.
+- 처음부터 완벽한 파일을 만들기 보다 새로 배운 내용이나 수정해야 할 내용이 있으면 계속 업데이트 하면서 완벽한 파일을 만들어간다.
 - 느린것보다 멈추는 것이 무서운 것이므로 느리더라도 꾸준히 기록하는것을 목표로 한다.
 
 ## 분류
@@ -26,7 +26,8 @@ Today I Learned
 
 ### ContianerSystem
 
-- [도커](./docs/ContainerSystem/Docker/Docker_basic.md)
+- [도커 기초](./docs/ContainerSystem/Docker/Docker_basic.md)
+- [쿠버네티스 기초](./docs/ContainerSystem/Kubernetes/Kubernetes_basic.md)
 
 ### DeepLearning
 
@@ -36,5 +37,11 @@ Today I Learned
 - [출력층 설계와 소프트맥스 함수](./docs/DeepLearning/4_outputlayer_softmax.ipynb)
 - [MNIST 실습과 배치](./docs/DeepLearning/5_MNIST_practice_batch.ipynb)
 - [손실 함수](./docs/DeepLearning/6_loss_function.ipynb)
+
+### DataFormat
+
+- [JSON](./docs/DataFormat/JSON.md)
+- [JSON-LD](./docs/DataFormat/JSON-LD.md)
+- [YAML, YML](./docs/DataFormat/YAML_YML.md)
 
 ---
