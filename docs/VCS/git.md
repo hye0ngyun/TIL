@@ -14,7 +14,9 @@ git은 프로젝트의 형상 관리를 위한 도구(Version Control System)중
     - modified
       - 수정됐다. staging area로 이동할 수 있다.
 - staging area
+  - git add 명령어를 통해 파일이 들어오는 공간
 - .git directory
+  - git commit 명령어를 통해 파일이 들어오는 공간
 
 ## 깃 이그노어(git ignore)
 
