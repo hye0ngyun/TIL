@@ -10,7 +10,7 @@
   - 연속 표현(Continuous Representation)이라고도 한다.
     > 국소 표현은 단어의 의미, 뉘앙스를 표현할 수 없지만, 분산 표현은 단어의 뉘앙스를 표현할 수 있다.
 
-![단어 표현의 카테고리화](wordrepresentation.png)
+![단어 표현의 카테고리화](./img/wordrepresentation.png)
 
 ## 참고 자료
 
