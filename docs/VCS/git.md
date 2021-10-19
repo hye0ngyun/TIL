@@ -26,8 +26,12 @@ git은 프로젝트의 형상 관리를 위한 도구(Version Control System)중
   - 게임의 세이브에 해당하는 행동을 git에서 커밋이라 한다. 즉, 언제든 커밋한 시점으로 되돌아 갈 수 있다. 커밋을 하려면 저장을 **원하는 파일들을 묶어서** 커밋 명령을 수행한다.
 - `git add` - 스테이지에 올린다.
   - 커밋을 할 때 파일들을 묶는다고 했는데, 이 묶는 작업이 **스테이지에 파일을 올리는 작업**이다.
-- `git push` - github에 업로드한다.
+- `git push` - 원격 git(ex; github)에 업로드한다.
   - 스테이지와 커밋은 로컬에서만 저장이 된다. 깃허브라는 리모트(원격 서버)에 내 깃 내역을 업로드 한다.
 - `git fetch`
-- `git pull`
-- `git clone`
+- `git pull` - 원격 git의 최신 커밋을 가져온다.
+- `git clone` - 원격 git으로부터 다운로드한다.
+- `git branch` - 분기한다.
+- `git checkout` - 분기를 이동한다.
+- `git reset`
+- `git revert`
