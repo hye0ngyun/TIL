@@ -32,6 +32,8 @@ git은 프로젝트의 형상 관리를 위한 도구(Version Control System)중
 - `git pull` - 원격 git의 최신 커밋을 가져온다.
 - `git clone` - 원격 git으로부터 다운로드한다.
 - `git branch` - 분기한다.
+  - `git branch [branchname]` - [branchname]으로 branch를 만든다.
+  - `git branch -a` - 전체(로컬, 리모트) 브랜치를 본다.
 - `git checkout` - 분기를 이동한다.
 - `git reset`
 - `git revert`
