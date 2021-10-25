@@ -1,15 +1,14 @@
 # 리눅스 명령어
 
 ## 현재 작업 디렉터리 확인
-- `pwd` - present working directory
-  - 
+- `pwd` - print working directory
 
 ## 작업 디렉터리 이동
 - `cd [dirname]` - change directory
   - 작업 디렉터리를 `[dirname]`으로 변경(이동)한다.
   - ex) `cd d1` - d1이라는 디렉터리로 이동한다.
 
-## 
+## 파일 목록 출력
 - `ls` - list
   - 작업 디렉터리의 목록을 보여준다.
 
@@ -26,3 +25,6 @@
     - 디렉터리를 삭제한다. 디렉터리 내부의 파일들을 모두 재귀적(r opt)으로 없앤다. 즉, 디렉터리를 강제로 삭제한다.
   - `rm [filename]`
     - 파일을 삭제한다.
+
+## 원하는 파일 목록 출력
+- `grep` - globally search a regular expression and print
