@@ -4,4 +4,8 @@
 - autocrawler
 - harr cascade
 - fullpage.js
-- 
+- bootstrap
+- jquery
+- prettier
+- ES Lint
+- web pack
