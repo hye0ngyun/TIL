@@ -28,3 +28,9 @@
 
 ## 원하는 파일 목록 출력
 - `grep` - globally search a regular expression and print
+
+## 서버 포트 오픈 확인
+- `nc` - NetCat
+  - 대상 서버의 포트가 오픈됐는지 확인한다.
+  - `nc [대상서버 IP] [대상 PORT]`
+
