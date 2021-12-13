@@ -32,3 +32,9 @@
 ## CSS
 
 - skeleton
+- tailwind css
+  - [https://tailwindcss.com/](https://tailwindcss.com/)
+
+## JS
+- swiper.js
+  - [https://swiperjs.com/](https://swiperjs.com/)
