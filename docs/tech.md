@@ -32,9 +32,17 @@
 ## CSS
 
 - skeleton
+- bootstrap
+  - [https://getbootstrap.com/](https://getbootstrap.com/)
 - tailwind css
   - [https://tailwindcss.com/](https://tailwindcss.com/)
 
 ## JS
+- JQuery
+  - [https://jquery.com/](https://jquery.com/)
 - swiper.js
   - [https://swiperjs.com/](https://swiperjs.com/)
+
+## Editor library
+- ckeditor
+  - [https://ckeditor.com/](https://ckeditor.com/)
