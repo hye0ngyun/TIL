@@ -38,11 +38,19 @@
   - [https://tailwindcss.com/](https://tailwindcss.com/)
 
 ## JS
+
 - JQuery
   - [https://jquery.com/](https://jquery.com/)
 - swiper.js
   - [https://swiperjs.com/](https://swiperjs.com/)
+- slick slider
+  - [https://kenwheeler.github.io/slick/](https://kenwheeler.github.io/slick/)
+- prefixfree
+  - [https://projects.verou.me/prefixfree/](https://projects.verou.me/prefixfree/)
+- fullpage.js
+  - [https://alvarotrigo.com/fullPage/ko/](https://alvarotrigo.com/fullPage/ko/)
 
 ## Editor library
+
 - ckeditor
   - [https://ckeditor.com/](https://ckeditor.com/)
