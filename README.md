@@ -15,6 +15,7 @@ Today I Learned
 - 느린것보다 멈추는 것이 무서운 것이므로 느리더라도 꾸준히 기록하는것을 목표로 한다.
 
 ## tree
+
 ```bash
 └─docs
     ├─ContainerSystem
@@ -31,11 +32,27 @@ Today I Learned
 
 ### API
 
-- [API란 무엇인가?](./docs/WEB/API.md)
+- [API란 무엇인가?](./docs/WEB/API/API.md)
+- [REST API](./docs/WEB/API/REST-API.md)
 
 ### JavaScript
 
-- [내장 객체](./docs/WEB/Built-in_Object.md)
+- [내장 객체](./docs/WEB/js/Built-in_Object.md)
+- [호이스팅(Hoisting)](./docs/WEB/js/Hoisting.md)
+- [DOM Selector 차이점](./docs/WEB/js/DOM_selector_diff.md)
+- [Promise](./docs/WEB/js/Promise.md)
+- [스코프(Scope)](./docs/WEB/js/Scope.md)
+- [객체(Object)](./docs/WEB/js/Object.md)
+
+### TypeScript
+
+- [타입 주석](./docs/WEB/TS/type_annotation.md)
+- [자바스크립트 대신 타입스크립트를 사용하는 이유](./docs/WEB/TS/why_TS.md)
+- [객체와 클래스의 타입](./docs/WEB/TS/object_class.md)
+
+### Version Control System
+
+- [Git](./docs/VCS/git.md)
 
 ### ContianerSystem
 
