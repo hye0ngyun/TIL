@@ -43,6 +43,8 @@ Today I Learned
 - [Promise](./docs/WEB/js/Promise.md)
 - [스코프(Scope)](./docs/WEB/js/Scope.md)
 - [객체(Object)](./docs/WEB/js/Object.md)
+- [this](./docs/WEB/js/this.md)
+- [확산 연산자(spread operator)](./docs/WEB/js/spread.md)
 
 ### TypeScript
 
