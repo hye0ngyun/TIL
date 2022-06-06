@@ -56,5 +56,147 @@ foo.bind(bar)(); // bar
 console.log(this === window); // true
 
 // in node.js terminal
-console.log(this === global) // true
+console.log(this === global); // true
+```
+
+전역 객체는 전역 스코프(Global Scope)를 갖는 전역변수(Global Variable)를 프로퍼티로 소유한다. 글로벌 영역에 선언한 함수는 전역객체의 프로퍼티로 접근할 수 있는 변수의 메소드이다.
+
+```js
+var ga = "Global variable";
+
+console.log(ga); // Global variable
+console.log(window.ga); // Global variable
+console.log(this.ga); // Global variable
+
+function foo() {
+  console.log("invoked!");
+}
+console.log(foo()); // invoked!
+console.log(window.foo()); // invoked!
+console.log(this.foo()); // invoked!
+```
+
+기본적으로 `this`는 전역객체(Global object)에 바인딩된다. 전역함수는 물론이고 심지어 내부함수의 경우도 `this`는 외부함수가 아닌 전역객체에 바인딩된다.
+
+```js
+function foo() {
+  console.log("foo's this: ", this); // window
+  function bar() {
+    console.log("bar's this: ", this); // window
+  }
+  bar();
+}
+foo();
+```
+
+또한 객체의 프로퍼티인 메소드의 내부함수일 경우에도 `this`는 전역객체에 바인딩된다.
+
+```js
+var value = 1;
+
+var obj = {
+  value: 100,
+  foo: function () {
+    console.log("foo's this: ", this); // obj
+    console.log("foo's this.value: ", this.value); // 100
+    function bar() {
+      console.log("bar's this: ", this); // window
+      console.log("bar's this.value: ", this.value); // 1
+    }
+    bar();
+  },
+};
+obj.foo();
+```
+
+콜백함수의 경우에도 `this`는 전역객체에 바인딩된다.
+
+```js
+var value = 1;
+
+var obj = {
+  value: 100,
+  foo: function () {
+    setTimeout(function () {
+      console.log("callbacks's this: ", this); // window
+      console.log("callbacks's this.value: ", this.value); // 1
+    }, 100);
+  },
+};
+obj.foo();
+```
+
+**내부함수는 일반 함수, 메소드, 콜백 함수 어디에서 선언되었든 관계없이 tihs는 전역객체를 바인딩한다.** 더글라스 크락포드는 “이것은 설계 단계의 결함으로 메소드가 내부함수를 사용하여 자신의 작업을 돕게 할 수 없다는 것을 의미한다” 라고 말한다. 내부함수의 this가 전역객체를 참조하는 것을 회피방법은 아래와 같다.
+
+```js
+var value = 1;
+
+var obj = {
+  value: 100,
+  foo: function () {
+    var that = this; // Workaround : this === obj
+
+    console.log("foo's this: ", this); // obj
+    console.log("foo's this.value: ", this.value); // 100
+    function bar() {
+      console.log("bar's this: ", this); // window
+      console.log("bar's this.value: ", this.value); // 1
+
+      console.log("bar's that: ", that); // obj
+      console.log("bar's that.value: ", that.value); // 100
+    }
+    bar();
+  },
+};
+
+obj.foo();
+```
+
+위 방법 이외에도 자바스크립트는 this를 명시적으로 바인딩할 수 있는 apply, call, bind 메소드를 제공한다.
+
+```js
+var value = 1;
+
+var obj = {
+  value: 100,
+  foo: function () {
+    console.log("foo's this: ", this); // obj
+    console.log("foo's this.value: ", this.value); // 100
+    function bar(a, b) {
+      console.log("bar's this: ", this); // obj
+      console.log("bar's this.value: ", this.value); // 100
+      console.log("bar's arguments: ", arguments); // 1, 2
+    }
+    bar();
+    bar.apply(obj, [1, 2]);
+    // bar.apply(obj, [1, 2]); === bar.apply(this, [1, 2]);
+    bar.call(obj, 1, 2); // ===
+    bar.bind(obj)(1, 2); // ===
+  },
+};
+
+obj.foo();
+```
+
+### 2. 메소드 호출
+
+함수가 객체의 프로퍼티 값이면 메소드로서 호출된다. 이때 메소드 내부의 this는 해당 메소드를 소유한 객체, 즉 해당 메소드를 호출한 객체에 바인딩된다.
+
+```js
+var obj1 = {
+  name: "Lee",
+  sayName: function () {
+    console.log(this);
+    console.log(this.name);
+  },
+};
+
+var obj2 = {
+  name: "Kim",
+};
+// obj2에 sayName이라는 메소드 프로퍼티 추가
+obj2.sayName = obj1.sayName;
+
+obj1.sayName(); // Lee
+obj2.sayName(); // Kim
 ```
