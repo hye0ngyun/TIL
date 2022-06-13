@@ -17,3 +17,11 @@
 
 - velog
 - 서핏
+
+## 06-13(월)
+
+### 기술면접
+
+1. web - 웹 표준과 웹 접근성
+2. js - var, let, const
+3. js - Array.forEach, filter, map 차이점 (값자체를 바꾸는지 반환하는지)
