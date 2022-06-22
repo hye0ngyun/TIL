@@ -21,7 +21,7 @@ ReactDOM.render(<App />, root);
 ### 렌더링 방식
 
 state가 변경된 컴포넌트에 대해서 컴포넌트가 재생성되면서 재 렌더링된다.
-또한 vanilla js로 DOM의 값을 변경 시켜주는 경우 태그와 값이 같이 재 렌더링 되는데, 
+또한 vanilla js로 DOM의 값을 변경 시켜주는 경우 태그와 값이 같이 재 렌더링 되는데,
 react state를 사용할 경우는 변경된 값만 재 렌더링 된다.
 
 ```js
@@ -51,5 +51,65 @@ function App() {
     </main>
   );
 }
+ReactDOM.render(<App />, root);
+```
+
+## props
+
+```js
+const Btn = (props) => {
+  return (
+    <button
+      style={{
+        backgroundColor: "tomato",
+        border: 0,
+        color: "white",
+        padding: "10px 20px",
+        borderRadius: 10,
+      }}
+    >
+      {props.text}
+    </button>
+  );
+};
+const App = () => {
+  return (
+    <div>
+      <Btn text="Save Changes" />
+      <Btn text="Continue" />
+    </div>
+  );
+};
+const root = document.getElementById("root");
+ReactDOM.render(<App />, root);
+```
+
+props를 받을 떄 아래처럼 받을 수 있다. 위와 아래 모두 동일하게 작동한다.
+
+```js
+const Btn = ({ text }) => {
+  return (
+    <button
+      style={{
+        backgroundColor: "tomato",
+        border: 0,
+        color: "white",
+        padding: "10px 20px",
+        borderRadius: 10,
+      }}
+    >
+      {text}
+    </button>
+  );
+};
+const App = () => {
+  return (
+    <div>
+      <Btn text="Save Changes" />
+      <Btn text="Continue" />
+    </div>
+  );
+};
+const root = document.getElementById("root");
 ReactDOM.render(<App />, root);
 ```
