@@ -1,15 +1,101 @@
 # vue
 
-## vue composition api
+## API 스타일
 
-### `<script setup>`
+### 옵션 API (Options API)
+
+옵션 API를 사용하는 경우, 옵션의 `data`, `methods` 및 `mounted`같은 객체를 사용해 컴포넌트 로직을 정의한다.
+옵션으로 정의된 속성을 컴포넌트 인스턴스를 가리키는 함수 내부의 `this`에 노출된다. 즉, 옵션으로 정의된 속성에 접근할 때 `this`로 접근가능하다.
+
+아래는 옵션 API 예시 SFC 코드이다.
+
+```vue
+<script>
+export default {
+  // data()에서 반환된 속성들은 반응적인 상태가 되어 `this`에 노출됩니다.
+  data() {
+    return {
+      count: 0,
+    };
+  },
+
+  // methods는 속성 값을 변경하고 업데이트 할 수 있는 함수.
+  // 템플릿 내에서 이벤트 리스너로 바인딩 될 수 있음.
+  methods: {
+    increment() {
+      this.count++;
+    },
+  },
+
+  // 생명주기 훅(Lifecycle hooks)은 컴포넌트 생명주기의 여러 단계에서 호출됩니다.
+  // 이 함수는 컴포넌트가 마운트 된 후 호출됩니다.
+  mounted() {
+    console.log(`숫자 세기의 초기값은 ${this.count} 입니다.`);
+  },
+};
+</script>
+
+<template>
+  <button @click="increment">숫자 세기: {{ count }}</button>
+</template>
+```
+
+### 컴포지션 API (Composition API)
+
+컴포지션 API를 사용하는 경우, `import`해서 가져온 API 함수들을 사용하여 컴포넌트의 로직을 정의한다.
+SFC에서 컴포지션 API는 일반적으로 `<script setup>`과 함께 사용된다.
+`<script setup>`에 `import`되어 가져온 객체들과 선언된 최상위 변수 및 함수는 템플릿에서 직접 사용 가능하다.
+
+아래는 컴포지션 API 예시 SFC 코드이다.
+
+```vue
+<script setup>
+import { ref, onMounted } from "vue";
+
+// 반응적인 상태의 속성
+const count = ref(0);
+
+// 속성 값을 변경하고 업데이트 할 수 있는 함수.
+function increment() {
+  count.value++;
+}
+
+// 생명 주기 훅
+onMounted(() => {
+  console.log(`숫자 세기의 초기값은 ${count.value} 입니다.`);
+});
+</script>
+
+<template>
+  <button @click="increment">숫자 세기: {{ count }}</button>
+</template>
+```
+
+setup은 컴포넌트가 생성되기 전에 `props`가 반환(resolved)되면 실행되는 컴포넌트 옵션으로 composition API의 진입점 역할을 한다.
+
+- 전달인자
+  - props: {Data}
+  - context: {SetupContext}
+
+#### `setup()`
+
+> 싱글 파일 컴포넌트(SFC)를 이용하는 경우 `setup()`훅을 이용하기 보다 간결하고 인체공학적 문법을 사용하기 위해 `<script setup>`을 사용하는것을 권장한다.
+
+`setup()` 훅은 다음과 같은 경우, 컴포넌트에서 컴포지션 API 사용을 위한 진입점 역할을 한다.
+
+- 빌드 과정 없이 컴포지션 API 사용.
+- 옵션 API 컴포넌트에서 컴포지션 API 기반 코드와 통합.
+
+#### `<script setup>`
 
 `<script></script>`같은 일반적인 script 태그의 경우는 컴포넌트가 처음 import될 때 한번 실행된다.
 반면 `<script setup></script>`는 컴포넌트 인스턴스가 생성될 때마다 실행된다.
 
 `<script setup></script>`태그는 모듈을 포함할 수 없다.(`<script setup>` cannot contain ES module)
 
-### 반응형 기초
+## vue 기본 개념과 문법 with Composition API
+
+### 반응형 기초 (Reactivity)
 
 #### reactive()를 사용한 반응형
 
@@ -23,9 +109,9 @@ const state = reactive({ count: 0 });
 
 reactive() API는 두 개의 제한 사항이 있다.
 
-객체, 배열 그리고 Map이나 Set과 같은 컬렉션 유형에만 작동합니다. string, number 또는 boolean과 같은 기본 유형에 사용할 수 없다.
+객체, 배열 그리고 Map이나 Set과 같은 컬렉션 유형에만 작동한다. string, number 또는 boolean과 같은 기본 유형에 사용할 수 없다.
 
-Vue의 반응형 변경 감지는 속성에 접근함으로써 작동하므로, 항상 반응형 객체에 대한 동일한 참조를 유지해야 합니다. 즉, 첫 번째 참조에 대한 반응형 연결이 손실되기 때문에 반응형 객체를 쉽게 "교체"할 수 없음을 의미한다.
+Vue의 반응형 변경 감지는 속성에 접근함으로써 작동하므로, 항상 반응형 객체에 대한 동일한 참조를 유지해야 한다. 즉, 첫 번째 참조에 대한 반응형 연결이 손실되기 때문에 반응형 객체를 쉽게 "교체"할 수 없음을 의미한다.
 
 #### ref()를 사용한 반응형
 
@@ -68,7 +154,7 @@ const doubled = computed(() => count.value * 2);
 
 - [https://joshua1988.github.io/vue-camp/vue3.html#reactive%E1%84%8B%E1%85%AA-ref%E1%84%8B%E1%85%B4-%E1%84%8E%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%B7](https://joshua1988.github.io/vue-camp/vue3.html#reactive%E1%84%8B%E1%85%AA-ref%E1%84%8B%E1%85%B4-%E1%84%8E%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%B7)
 
-### 속성 바인딩
+### 속성 바인딩 (Data Binding)
 
 #### `v-bind`
 
@@ -96,7 +182,7 @@ const titleId = ref("title");
 </style>
 ```
 
-### 이벤트 리스너
+### 이벤트 리스너 (Event Listener, Event Handling)
 
 #### `v-on`
 
@@ -120,7 +206,7 @@ const increment = () => {
 </template>
 ```
 
-### 폼(form) 바인딩
+### 폼 바인딩 (Form Binding)
 
 #### `v-bind`와 `v-on`
 
@@ -162,7 +248,7 @@ const text = ref("");
 
 v-model은 텍스트 입력 외에도 체크박스, 라디오 버튼, 셀렉트 드롭다운과 같은 다른 입력 타입에서도 작동한다. 따라서 `v-bind`, `v-on`으로 양방향 바인딩하는것보다 `v-model`을 이용하도록 하자.
 
-### 조건부 렌더링
+### 조건부 렌더링 (Conditional Rendering)
 
 #### `v-if`와 `v-else`
 
@@ -221,7 +307,7 @@ function toggle() {
 
 `v-if`와 `v-for`를 함께 사용되는것은 권장되지 않는다. `v-if` vs `v-for`를 함께 사용하면 `v-if`가 먼저 평가된다.
 
-### 리스트 렌더링
+### 리스트 렌더링 (List Rendering)
 
 #### `v-for`
 
@@ -243,7 +329,6 @@ const todos = ref([
 
 <template>
   <ul>
-    ****
     <li v-for="todo in todos" :key="todo.id">
       {{ todo.text }}
       <button>X</button>
@@ -252,10 +337,10 @@ const todos = ref([
 </template>
 ```
 
-### 계산된 속성(computed)
+### 계산된 속성 (Computed Property)
 
 템플릿 내 표현식`{{표현식}}`은 매우 편하지만 간단한 작업만을 위한 것이다.
-템플릿에 너무 많은 논리를
+템플릿에 너무 많은 논리를 표현하려 하면 템플릿 코드가 비대해져 가독성에 좋지 않다.
 
 ```vue
 <script setup>
@@ -283,7 +368,7 @@ const reversedMessage = computed(() => {
 
 위 코드에서 모든 h1태그에 `message.split("").reverse().join("")`과 `computedMessage`, 익명함수는 동일하게 렌더링된다.
 
-### 생명주기와 템플릿 참조
+### 생명주기와 템플릿 참조 (Lifecycle, Template ref)
 
 아래는 vue의 instance가 생성될 때 진행되는 생명주기이다.
 기본적인 흐름으로 `Create => Mount => Update => Unmount` 순서로 진행되며 각각 이전(ex] beforeOnMount)과 이후(ex] onMounted)가 존재한다.
@@ -304,12 +389,12 @@ onMounted(() => {
 </template>
 ```
 
-#### 참고
+참고
 
 - [https://v3-docs.vuejs-korea.org/guide/essentials/lifecycle.html#lifecycle-diagram](https://v3-docs.vuejs-korea.org/guide/essentials/lifecycle.html#lifecycle-diagram)
 - [https://v3-docs.vuejs-korea.org/api/composition-api-lifecycle.html](https://v3-docs.vuejs-korea.org/api/composition-api-lifecycle.html)
 
-### 감시자(watch)
+### 감시자 (Watch)
 
 vue에서 `watch(데이터, 콜백함수)`함수는 해당 데이터가 변경됐을 때 전달된 콜백함수를 실행하도록 한다.
 react의 `useEffet(콜백함수, 데이터)`훅과 비슷한 동작을 한다.
@@ -341,12 +426,12 @@ watch(todoId, fetchData);
 </template>
 ```
 
-#### 참고
+참고
 
 - [https://v3-docs.vuejs-korea.org/guide/essentials/watchers.html](https://v3-docs.vuejs-korea.org/guide/essentials/watchers.html)
 - [https://imagineu.tistory.com/74](https://imagineu.tistory.com/74)
 
-### 컴포넌트(component)
+### 컴포넌트 (Component)
 
 컴포넌트란 조합하여 화면을 구성할 수 있는 블록을 의미한다. 컴포넌트를 활용하면 중복되는 코드를 줄일 수 있고 화면을 구조화해 일괄적인 패턴으로 개발할 수 있다. 즉, 코드를 쉽게 이해하고 재사용할 수 있다.
 
@@ -368,12 +453,12 @@ import ChildComp from "./ChildComp.vue";
 </template>
 ```
 
-#### 참고
+참고
 
 - [https://v3-docs.vuejs-korea.org/guide/essentials/component-basics.html](https://v3-docs.vuejs-korea.org/guide/essentials/component-basics.html)
 - [https://velog.io/@sms8377/Javascript-Vue-%EC%97%90%EC%84%9C-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EB%9E%80](https://velog.io/@sms8377/Javascript-Vue-%EC%97%90%EC%84%9C-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EB%9E%80)
 
-### Props
+### 자식 컴포넌트로 데이터 전달 (Props)
 
 자식 컴포넌트는 props를 통해 부모로부터 데이터를 받는다. 그리고 props를 받기 위해서는 `defineProps()`를 이용해 props를 선언해야 한다. props를 선언할 때 타입스크립트의 인터페이스처럼 받을 prop의 이름과 타입을 정해줘야 한다.
 
@@ -405,7 +490,7 @@ const props = defineProps({
 </template>
 ```
 
-### Emits
+### 부모 컴포넌트로 이벤트 전달 (Emits)
 
 자식 컴포넌트는 부모로부터 props를 받는것 뿐만 아니라 이벤트를 emit(발송)할 수 있다.
 
